@@ -1,2 +1,2 @@
-# leetcode-server
-力扣 (LeetCode)
+# wya-leetcode-server
+力扣
