@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * @Author hhe
  * @Date 2021/2/4 17:12
- * @Description mysql查询
+ * @Description Jdbc测试类
  */
 public class MyJdbc {
 
@@ -110,5 +110,6 @@ public class MyJdbc {
         } finally {
             close(rs, ps, con);
         }
+        System.out.println("=====end=====");
     }
 }
