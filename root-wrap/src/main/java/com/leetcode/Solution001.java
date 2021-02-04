@@ -1,11 +1,11 @@
 package com.leetcode;
 
+import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * @Author hhe
@@ -33,19 +33,17 @@ public class Solution001 {
     }
 
     public static void main(String[] args) {
-        // 接收从控制台输入
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        n = n < 5 ? 5 : n % 100;
+        // 模拟输入
+        int n = MockUtils.get(100);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(0, 100, n);
         System.out.println("nums = " + Arrays.toString(nums));
 
         int[] result = new Solution001().twoSum(nums, 50);
+        System.out.println("result = " + result.length);
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i] + " - " + nums[result[i]]);
         }
-        System.out.println("target = " + 50);
         System.out.println("=====end=====");
     }
 }
