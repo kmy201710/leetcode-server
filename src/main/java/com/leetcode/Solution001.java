@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author hhe
- * @date 2021/2/3 17:35
- * @Description
+ * @Author hhe
+ * @Date  2021/2/3 17:35
+ * @Description 题库
  * 1. 两数之和
  * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
  *
@@ -36,6 +36,7 @@ public class Solution001 {
         // 接收从控制台输入
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
+        n = n < 5 ? 5 : n % 100;
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(0, 100, n);
         System.out.println("nums = " + Arrays.toString(nums));

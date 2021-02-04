@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * @author hhe
- * @date 2021/2/3 17:35
- * @Description
+ * @Author hhe
+ * @Date  2021/2/3 17:35
+ * @Description 题库
  * 2. 两数相加
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
  *
@@ -52,23 +52,23 @@ public class Solution002 {
         // 接收从控制台输入
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
-        n = n % 10 < 5 ? 5 : n % 10;
+        n = n < 5 ? 5 : n % 10;
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(0, 10, n);
         System.out.println("nums = " + Arrays.toString(nums));
-        ListNode l1 = null;
+
+        ListNode l1 = new ListNode(), l2 = new ListNode();
         for (int i = 0; i < 3; i++) {
-            l1 = ListNode.push(l1, nums[i]);
+            l1 = l1.push(nums[i]);
         }
 
-        ListNode l2 = null;
         for (int i = 3; i < n; i++) {
-            l2 = ListNode.push(l2, nums[i]);
+            l2 = l2.push(nums[i]);
         }
-        ListNode listNode = new Solution002().addTwoNumbers(l1, l2);
-        while (listNode != null) {
-            System.out.print(listNode.val + " ");
-            listNode = listNode.next;
+        ListNode node = new Solution002().addTwoNumbers(l1, l2);
+        while (node != null) {
+            System.out.print(node.val + " ");
+            node = node.next;
         }
         System.out.println();
         System.out.println("=====end=====");
