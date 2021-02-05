@@ -11,8 +11,7 @@ import java.util.List;
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
- * @Description 题库
- * 4. 寻找两个正序数组的中位数
+ * @Description 4. 寻找两个正序数组的中位数
  * 给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数。
  * <p>
  * 来源：力扣（LeetCode）

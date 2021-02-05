@@ -11,8 +11,7 @@ import java.util.List;
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
- * @Description 题库
- * 2. 两数相加
+ * @Description 2. 两数相加
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
  * <p>
  * 来源：力扣（LeetCode）

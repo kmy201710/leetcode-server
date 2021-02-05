@@ -9,8 +9,7 @@ import java.util.List;
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
- * @Description 题库
- * 344. 反转字符串
+ * @Description 344. 反转字符串
  * 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
  * <p>
  * 来源：力扣（LeetCode）

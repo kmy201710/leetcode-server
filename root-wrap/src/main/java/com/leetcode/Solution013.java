@@ -3,8 +3,7 @@ package com.leetcode;
 /**
  * @Author hhe
  * @Date 2021/2/5 16:23
- * @Description 题库
- * 13. 罗马数字转整数
+ * @Description 13. 罗马数字转整数
  * 罗马数字包含以下七种字符： I， V， X， L，C，D 和 M
  * <p>
  * 来源：力扣（LeetCode）
