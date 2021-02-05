@@ -1,10 +1,10 @@
 package com.leetcode;
 
-import com.leetcode.model.ListNode;
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author hhe
@@ -12,40 +12,35 @@ import java.util.Arrays;
  * @Description 题库
  * 344. 反转字符串
  * 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/reverse-string/
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution344 {
-    private static ListNode node = new ListNode();
+    private static List<Character> list = new ArrayList();
 
-    public void reverseArray(int[] s) {
-        helper(s, 0);
+    public void reverseString(String s) {
+        helper(s.toCharArray(), 0);
     }
 
-    private void helper(int[] s, int index) {
-        if (s.length == index) {
+    private void helper(char[] c, int index) {
+        if (c.length == index) {
             return;
         }
-        helper(s, index + 1);
-        node = node.push(s[index]);
+        helper(c, index + 1);
+        list.add(c[index]);
     }
 
     public static void main(String[] args) {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(0, 10, n);
-        System.out.println("nums = " + Arrays.toString(nums));
+        String s = RandomUtils.randomCommon("a2546fdmfdscx", n);
+        System.out.println("s = " + s);
 
-        new Solution344().reverseArray(nums);
-
-        while (node != null) {
-            System.out.print(node.val + " ");
-            node = node.next;
-        }
-        System.out.println();
+        new Solution344().reverseString(s);
+        System.out.println("Solution344 = " + list.toString());
         System.out.println("=====end=====");
     }
 }

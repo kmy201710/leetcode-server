@@ -4,71 +4,62 @@ import com.leetcode.model.ListNode;
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Author hhe
- * @Date  2021/2/3 17:35
+ * @Date 2021/2/3 17:35
  * @Description 题库
  * 2. 两数相加
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/add-two-numbers
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution002 {
+    private static List<Integer> list = new ArrayList();
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode head = null, tail = null;
-        int carry = 0;
-        while (l1 != null || l2 != null) {
-            int n1 = l1 != null ? l1.val : 0;
-            int n2 = l2 != null ? l2.val : 0;
-            int sum = n1 + n2 + carry;
-            carry = sum / 10;
-
-            if (head == null) {
-                head = tail = new ListNode(sum % 10);
-            } else {
-                tail.next = new ListNode(sum % 10);
-                tail = tail.next;
-            }
-
-            if (l1 != null) {
-                l1 = l1.next;
-            }
-            if (l2 != null) {
-                l2 = l2.next;
-            }
-        }
+    public void addTwoNumbers(int[] nums1, int[] nums2) {
+        ListNode l1 = new ListNode(), l2 = new ListNode();
+        int carry = helper(l1.push(nums1), l2.push(nums2), 0);
         if (carry > 0) {
-            tail.next = new ListNode(carry);
+            list.add(carry);
         }
-        return head;
+    }
+
+    private int helper(ListNode l1, ListNode l2, int carry) {
+        if (l1 == null && l2 == null) {
+            return carry;
+        }
+        int n1 = l1 != null ? l1.val : 0;
+        int n2 = l2 != null ? l2.val : 0;
+        int sum = n1 + n2 + carry;
+        carry = sum / 10;
+
+        list.add(sum % 10);
+        if (l1 != null) {
+            l1 = l1.next;
+        }
+        if (l2 != null) {
+            l2 = l2.next;
+        }
+        return helper(l1, l2, carry);
     }
 
     public static void main(String[] args) {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(0, 10, n);
-        System.out.println("nums = " + Arrays.toString(nums));
+        int[] nums1 = RandomUtils.randomCommon(n);
+        int[] nums2 = RandomUtils.randomCommon(nums1[0]);
+        System.out.println("nums1 = " + Arrays.toString(nums1));
+        System.out.println("nums2 = " + Arrays.toString(nums2));
 
-        ListNode l1 = new ListNode(), l2 = new ListNode();
-        for (int i = 0; i < 3; i++) {
-            l1 = l1.push(nums[i]);
-        }
-
-        for (int i = 3; i < n; i++) {
-            l2 = l2.push(nums[i]);
-        }
-        ListNode node = new Solution002().addTwoNumbers(l1, l2);
-        while (node != null) {
-            System.out.print(node.val + " ");
-            node = node.next;
-        }
-        System.out.println();
+        new Solution002().addTwoNumbers(nums1, nums2);
+        System.out.println("Solution002 = " + list.toString());
         System.out.println("=====end=====");
     }
 }
