@@ -19,11 +19,11 @@ import java.util.List;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution004 {
-    private static List<Integer> list = new ArrayList();
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         ListNode l1 = new ListNode(), l2 = new ListNode();
-        helper(l1.push(nums1), l2.push(nums2));
+        List<Integer> list = new ArrayList();
+        helper(l1.push(nums1), l2.push(nums2), list);
 
         int count = list.size();
         if (count % 2 == 0) {
@@ -33,9 +33,9 @@ public class Solution004 {
         }
     }
 
-    private void helper(ListNode l1, ListNode l2) {
+    private List<Integer> helper(ListNode l1, ListNode l2, List list) {
         if (l1 == null && l2 == null) {
-            return;
+            return list;
         }
         int n1 = l1 != null ? l1.val : 0;
         int n2 = l2 != null ? l2.val : 0;
@@ -53,7 +53,7 @@ public class Solution004 {
             list.add(n2);
             l2 = l2.next != null ? l2.next : null;
         }
-        helper(l1, l2);
+        return helper(l1, l2, list);
     }
 
     public static void main(String[] args) {
@@ -66,7 +66,6 @@ public class Solution004 {
         System.out.println("nums2 = " + Arrays.toString(nums2));
 
         double v = new Solution004().findMedianSortedArrays(nums1, nums2);
-        System.out.println("list = " + list.toString());
         System.out.println("Solution004 = " + v);
         System.out.println("=====end=====");
     }

@@ -33,12 +33,12 @@ public class Solution001 {
 
     public static void main(String[] args) {
         // 模拟输入
-        int n = MockUtils.get(100);
+        int n = MockUtils.get(10);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(0, 100, n);
+        int[] nums = RandomUtils.randomCommon(n);
         System.out.println("nums = " + Arrays.toString(nums));
 
-        int[] twoSum = new Solution001().twoSum(nums, 50);
+        int[] twoSum = new Solution001().twoSum(nums, 9);
         System.out.println("Solution001 = " + Arrays.toString(twoSum));
         System.out.println("=====end=====");
     }

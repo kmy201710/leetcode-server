@@ -1,8 +1,6 @@
 package com.leetcode.utils;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.util.*;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 随机数工具类  https://blog.csdn.net/sinat_32829963/article/details/70232076
@@ -49,12 +47,17 @@ public class RandomUtils {
     }
 
     public static String randomCommon(String str, int n) {
+        if (StringUtils.isEmpty(str)) {
+            return null;
+        }
+        int max = str.length();
         char[] c = str.toCharArray();
         int[] nums = randomCommon(n);
         String result = "";
-        List<String> list = new ArrayList();
         for (int i = 0; i < n; i++) {
-            result += String.valueOf(c[nums[i]]);
+            if (nums[i] < max) {
+                result += String.valueOf(c[nums[i]]);
+            }
         }
         return result;
     }

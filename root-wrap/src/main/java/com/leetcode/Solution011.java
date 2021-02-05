@@ -1,5 +1,10 @@
 package com.leetcode;
 
+import com.leetcode.utils.MockUtils;
+import com.leetcode.utils.RandomUtils;
+
+import java.util.Arrays;
+
 /**
  * @Author hhe
  * @Date 2021/2/5 16:23
@@ -14,11 +19,40 @@ package com.leetcode;
 public class Solution011 {
 
     public int maxArea(int[] height) {
-        return 0;
+        return helper(height, 0, height.length - 1, 0);
+    }
+
+    private int helper(int[] height, int left, int right, int maxArea) {
+        if (left == right) {
+            return maxArea;
+        }
+        int area;
+        if (height[left] < height[right]) {
+            area = height[left] * (right-left);
+            left += 1;
+        } else if (height[left] > height[right]){
+            area = height[right] * (right-left);
+            right -= 1;
+        } else {
+            area = height[right] * (right-left);
+            if (height[left + 1] > height[right - 1]) {
+                left += 1;
+            } else {
+                right -= 1;
+            }
+        }
+        return helper(height, left, right, Math.max(area, maxArea));
     }
 
     public static void main(String[] args) {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        int[] nums = RandomUtils.randomCommon(n);
+        System.out.println("nums = " + Arrays.toString(nums));
 
+        int maxArea = new Solution011().maxArea(nums);
+        System.out.println("maxArea = " + maxArea);
         System.out.println("=====end=====");
     }
 }

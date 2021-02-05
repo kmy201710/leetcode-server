@@ -18,21 +18,25 @@ import java.util.*;
 public class Solution003 {
 
     public int lengthOfLongestSubstring(char[] c) {
+        return helper(c, 0, 0);
+    }
+
+    private int helper(char[] c, int index, int length) {
         Map<Character, Integer> map = new HashMap();
-        for (int i = 0; i < c.length; i++) {
+        for (int i = index; i < c.length; i++) {
             if (map.containsKey(c[i])) {
-                return i + 1;
+                return helper(c, i, Math.max(i - index, length));
             }
             map.put(c[i], i);
         }
-        return -1;
+        return length;
     }
 
     public static void main(String[] args) {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
-        String s = RandomUtils.randomCommon("a2546123fda2dsfdmfdscx", n);
+        String s = RandomUtils.randomCommon("a25fda2dsfdmfdscx", n);
         System.out.println("s = " + s);
 
         int length = new Solution003().lengthOfLongestSubstring(s.toCharArray());
