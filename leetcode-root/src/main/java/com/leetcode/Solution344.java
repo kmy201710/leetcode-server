@@ -35,7 +35,7 @@ public class Solution344 {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
-        String s = RandomUtils.randomCommon("a2546fdmfdscx", n);
+        String s = RandomUtils.randomCommon(MockUtils.str, n);
         System.out.println("s = " + s);
 
         new Solution344().reverseString(s);

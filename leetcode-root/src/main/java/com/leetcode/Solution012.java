@@ -4,6 +4,9 @@ import com.leetcode.model.ListNode;
 import com.leetcode.model.Roman;
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
+import org.apache.log4j.Logger;
+
+import java.util.Arrays;
 
 /**
  * @Author hhe
@@ -16,11 +19,28 @@ import com.leetcode.utils.RandomUtils;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution012 {
+    private static Logger logger = Logger.getLogger(Solution012.class);
+
     private static ListNode node = ListNode.get(new Roman());
 
-    public String intToRoman(String s) {
-        int num = Integer.valueOf(s);
-        return helper(num, "");
+    public Solution012() {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        int[] nums = RandomUtils.randomCommon(n);
+        logger.info("nums = " + Arrays.toString(nums));
+
+        String result = intToRoman(nums);
+        logger.info("intToRoman = " + result);
+        logger.info("=====end=====");
+    }
+
+    public String intToRoman(int[] nums) {
+        String s = "";
+        for (int i = 0; i < nums.length; i++) {
+            s += nums[i];
+        }
+        return helper(Integer.valueOf(s), "");
     }
 
     private String helper(int num, String val) {
@@ -34,17 +54,5 @@ public class Solution012 {
         }
         node = node.next;
         return helper(carry, val);
-    }
-
-    public static void main(String[] args) {
-        // 模拟输入
-        int n = MockUtils.get(10);
-        // 获取随机数
-        String s = RandomUtils.randomCommon("1035608", n);
-        System.out.println("s = " + s);
-
-        String roman = new Solution012().intToRoman(s);
-        System.out.println("roman = " + roman);
-        System.out.println("=====end=====");
     }
 }

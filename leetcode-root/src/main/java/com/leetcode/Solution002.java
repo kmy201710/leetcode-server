@@ -3,6 +3,7 @@ package com.leetcode;
 import com.leetcode.model.ListNode;
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +20,23 @@ import java.util.List;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution002 {
+    private static Logger logger = Logger.getLogger(Solution002.class);
+
     private static List<Integer> list = new ArrayList();
+
+    public Solution002() {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        int[] nums1 = RandomUtils.randomCommon(n);
+        int[] nums2 = RandomUtils.randomCommon(nums1[0]);
+        logger.info("nums1 = " + Arrays.toString(nums1));
+        logger.info("nums2 = " + Arrays.toString(nums2));
+
+        addTwoNumbers(nums1, nums2);
+        logger.info("addTwoNumbers = " + list.toString());
+        logger.info("=====end=====");
+    }
 
     public void addTwoNumbers(int[] nums1, int[] nums2) {
         ListNode l1 = new ListNode(), l2 = new ListNode();
@@ -46,19 +63,5 @@ public class Solution002 {
             l2 = l2.next;
         }
         return helper(l1, l2, carry);
-    }
-
-    public static void main(String[] args) {
-        // 模拟输入
-        int n = MockUtils.get(10);
-        // 获取随机数
-        int[] nums1 = RandomUtils.randomCommon(n);
-        int[] nums2 = RandomUtils.randomCommon(nums1[0]);
-        System.out.println("nums1 = " + Arrays.toString(nums1));
-        System.out.println("nums2 = " + Arrays.toString(nums2));
-
-        new Solution002().addTwoNumbers(nums1, nums2);
-        System.out.println("Solution002 = " + list.toString());
-        System.out.println("=====end=====");
     }
 }

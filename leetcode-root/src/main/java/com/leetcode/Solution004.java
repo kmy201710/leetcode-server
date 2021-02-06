@@ -3,6 +3,7 @@ package com.leetcode;
 import com.leetcode.model.ListNode;
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,21 @@ import java.util.List;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution004 {
+    private static Logger logger = Logger.getLogger(Solution004.class);
+
+    public Solution004() {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        int[] nums1 = RandomUtils.randomCommon2(n);
+        int[] nums2 = RandomUtils.randomCommon2(nums1[0]);
+        logger.info("nums1 = " + Arrays.toString(nums1));
+        logger.info("nums2 = " + Arrays.toString(nums2));
+
+        double result = findMedianSortedArrays(nums1, nums2);
+        logger.info("findMedianSortedArrays = " + result);
+        logger.info("=====end=====");
+    }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         ListNode l1 = new ListNode(), l2 = new ListNode();
@@ -54,19 +70,5 @@ public class Solution004 {
             l2 = l2.next != null ? l2.next : null;
         }
         return helper(l1, l2, list);
-    }
-
-    public static void main(String[] args) {
-        // 模拟输入
-        int n = MockUtils.get(10);
-        // 获取随机数
-        int[] nums1 = RandomUtils.randomCommon2(n);
-        int[] nums2 = RandomUtils.randomCommon2(nums1[0]);
-        System.out.println("nums1 = " + Arrays.toString(nums1));
-        System.out.println("nums2 = " + Arrays.toString(nums2));
-
-        double v = new Solution004().findMedianSortedArrays(nums1, nums2);
-        System.out.println("Solution004 = " + v);
-        System.out.println("=====end=====");
     }
 }

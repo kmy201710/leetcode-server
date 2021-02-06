@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode.demo;
 
 import com.leetcode.spi.HelloService;
 
@@ -10,9 +10,9 @@ import java.util.ServiceLoader;
  * @Date  2021/2/4 19:13
  * @Description Spi测试类
  */
-public class MySpi {
+public class SpiDemo {
 
-    public static void main(String[] args) {
+    public SpiDemo() {
         ServiceLoader<HelloService> serviceLoader = ServiceLoader.load(HelloService.class);
         Iterator<HelloService> iterator = serviceLoader.iterator();
         while (iterator.hasNext()) {
@@ -21,5 +21,4 @@ public class MySpi {
         }
         System.out.println("=====end=====");
     }
-
 }

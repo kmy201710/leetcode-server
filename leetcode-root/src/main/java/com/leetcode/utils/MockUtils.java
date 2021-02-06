@@ -3,12 +3,12 @@ package com.leetcode.utils;
 import java.util.Scanner;
 
 /**
- *
  * @Author hhe
  * @Date 2021/2/4 13:51
  * @Description
  */
 public class MockUtils {
+    public static String str = "a#23fafddcsc";
 
     /**
      * 模拟输入

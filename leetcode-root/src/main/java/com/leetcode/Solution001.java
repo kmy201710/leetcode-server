@@ -2,6 +2,7 @@ package com.leetcode;
 
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
+import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,6 +19,19 @@ import java.util.Map;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution001 {
+    private static Logger logger = Logger.getLogger(Solution001.class);
+
+    public Solution001() {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        int[] nums = RandomUtils.randomCommon(n);
+        logger.info("nums = " + Arrays.toString(nums));
+
+        int[] result = twoSum(nums, 9);
+        logger.info("twoSum = " + Arrays.toString(result));
+        logger.info("=====end=====");
+    }
 
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap();
@@ -29,17 +43,5 @@ public class Solution001 {
             map.put(nums[i], i);
         }
         return new int[0];
-    }
-
-    public static void main(String[] args) {
-        // 模拟输入
-        int n = MockUtils.get(10);
-        // 获取随机数
-        int[] nums = RandomUtils.randomCommon(n);
-        System.out.println("nums = " + Arrays.toString(nums));
-
-        int[] twoSum = new Solution001().twoSum(nums, 9);
-        System.out.println("Solution001 = " + Arrays.toString(twoSum));
-        System.out.println("=====end=====");
     }
 }

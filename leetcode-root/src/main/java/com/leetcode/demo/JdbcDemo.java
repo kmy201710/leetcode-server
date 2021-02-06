@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode.demo;
 
 import java.sql.*;
 
@@ -7,7 +7,7 @@ import java.sql.*;
  * @Date 2021/2/4 17:12
  * @Description Jdbc测试类
  */
-public class MyJdbc {
+public class JdbcDemo {
 
     // JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -28,6 +28,25 @@ public class MyJdbc {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public JdbcDemo() {
+        Connection con = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from t_code order by id desc";
+        try {
+            ps = con.prepareStatement(sql);
+            if (ps.execute()) {
+                rs = ps.getResultSet();
+                printResultSet(rs);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(rs, ps, con);
+        }
+        System.out.println("=====end=====");
     }
 
     /**
@@ -92,24 +111,5 @@ public class MyJdbc {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        Connection con = getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "select * from t_code order by id desc";
-        try {
-            ps = con.prepareStatement(sql);
-            if (ps.execute()) {
-                rs = ps.getResultSet();
-                printResultSet(rs);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            close(rs, ps, con);
-        }
-        System.out.println("=====end=====");
     }
 }

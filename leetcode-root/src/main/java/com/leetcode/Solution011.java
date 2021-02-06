@@ -2,6 +2,7 @@ package com.leetcode;
 
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
+import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -17,6 +18,19 @@ import java.util.Arrays;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution011 {
+    private static Logger logger = Logger.getLogger(Solution011.class);
+
+    public Solution011() {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        int[] nums = RandomUtils.randomCommon(n);
+        logger.info("nums = " + Arrays.toString(nums));
+
+        int result = maxArea(nums);
+        logger.info("maxArea = " + result);
+        logger.info("=====end=====");
+    }
 
     public int maxArea(int[] height) {
         return helper(height, 0, height.length - 1, 0);
@@ -28,13 +42,13 @@ public class Solution011 {
         }
         int area;
         if (height[left] < height[right]) {
-            area = height[left] * (right-left);
+            area = height[left] * (right - left);
             left += 1;
-        } else if (height[left] > height[right]){
-            area = height[right] * (right-left);
+        } else if (height[left] > height[right]) {
+            area = height[right] * (right - left);
             right -= 1;
         } else {
-            area = height[right] * (right-left);
+            area = height[right] * (right - left);
             if (height[left + 1] > height[right - 1]) {
                 left += 1;
             } else {
@@ -42,17 +56,5 @@ public class Solution011 {
             }
         }
         return helper(height, left, right, Math.max(area, maxArea));
-    }
-
-    public static void main(String[] args) {
-        // 模拟输入
-        int n = MockUtils.get(10);
-        // 获取随机数
-        int[] nums = RandomUtils.randomCommon(n);
-        System.out.println("nums = " + Arrays.toString(nums));
-
-        int maxArea = new Solution011().maxArea(nums);
-        System.out.println("maxArea = " + maxArea);
-        System.out.println("=====end=====");
     }
 }

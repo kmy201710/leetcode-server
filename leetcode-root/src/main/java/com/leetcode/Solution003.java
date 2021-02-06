@@ -2,8 +2,10 @@ package com.leetcode;
 
 import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
+import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author hhe
@@ -16,6 +18,19 @@ import java.util.*;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution003 {
+    private static Logger logger = Logger.getLogger(Solution003.class);
+
+    public Solution003() {
+        // 模拟输入
+        int n = MockUtils.get(10);
+        // 获取随机数
+        String s = RandomUtils.randomCommon(MockUtils.str, n);
+        logger.info("s = " + s);
+
+        int result = lengthOfLongestSubstring(s.toCharArray());
+        logger.info("lengthOfLongestSubstring = " + result);
+        logger.info("=====end=====");
+    }
 
     public int lengthOfLongestSubstring(char[] c) {
         return helper(c, 0, 0);
@@ -30,17 +45,5 @@ public class Solution003 {
             map.put(c[i], i);
         }
         return length;
-    }
-
-    public static void main(String[] args) {
-        // 模拟输入
-        int n = MockUtils.get(10);
-        // 获取随机数
-        String s = RandomUtils.randomCommon("a25fda2dsfdmfdscx", n);
-        System.out.println("s = " + s);
-
-        int length = new Solution003().lengthOfLongestSubstring(s.toCharArray());
-        System.out.println("Solution003 = " + length);
-        System.out.println("=====end=====");
     }
 }
