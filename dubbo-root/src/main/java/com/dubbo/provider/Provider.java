@@ -1,4 +1,4 @@
-package com.leetcode.dubbo.provider;
+package com.dubbo.provider;
 
 public class Provider {
 

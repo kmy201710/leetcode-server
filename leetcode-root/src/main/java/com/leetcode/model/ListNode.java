@@ -1,5 +1,8 @@
 package com.leetcode.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Definition for singly-linked list.
  */
@@ -8,25 +11,49 @@ public class ListNode {
     public String name;
     public ListNode next;
 
+    public static ListNode instance = null;
+
     public ListNode() {
         val = -1;
     }
 
-    public ListNode(int x) {
-        val = x;
+    public ListNode(Object obj) {
+        if (obj instanceof Integer) {
+            this.val = (Integer) obj;
+        } else {
+            this.name = (String) obj;
+        }
     }
 
     public ListNode(int x, String s) {
-        val = x;
-        name = s;
+        this.val = x;
+        this.name = s;
     }
 
-    public ListNode push(int[] nums) {
-        ListNode node = new ListNode();
-        for (int i = 0; i < nums.length; i++) {
-            node = node.push(nums[i]);
+    public int[] popVal() {
+        if (val == -1) {
+            return null;
         }
-        return node;
+        List<Integer> list = new ArrayList();
+        list.add(val);
+        instance = next;
+        while (instance != null) {
+            list.add(instance.val);
+            instance = instance.next;
+        }
+        int[] nums = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            nums[i] = list.get(i);
+        }
+        return nums;
+    }
+
+    public ListNode push(int... nums) {
+        instance = this;
+        for (int i = 0; i < nums.length; i++) {
+            instance = instance.push(nums[i]);
+        }
+        return instance;
     }
 
     public ListNode push(int x) {
@@ -36,13 +63,16 @@ public class ListNode {
         return helper(this, x);
     }
 
-    public ListNode helper(ListNode node, int x) {
+    public ListNode helper(ListNode node, Object obj) {
         if (node == null) {
-            return new ListNode(x);
-        } else {
-            node.next = helper(node.next, x);
+            return new ListNode(obj);
         }
+        node.next = helper(node.next, obj);
         return node;
+    }
+
+    public static ListNode get(int... nums) {
+        return new ListNode().push(nums);
     }
 
     public static ListNode get(Roman r) {

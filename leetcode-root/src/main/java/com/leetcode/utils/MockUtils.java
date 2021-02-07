@@ -23,7 +23,7 @@ public class MockUtils {
         } else {
             n = Integer.valueOf(mock);
         }
-        return n < 5 ? 5 : n % tag;
+        return n < 3 ? 3 : n % tag;
     }
 
 }

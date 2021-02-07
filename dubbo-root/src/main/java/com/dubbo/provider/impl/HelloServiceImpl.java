@@ -1,6 +1,6 @@
-package com.leetcode.dubbo.provider.impl;
+package com.dubbo.provider.impl;
 
-import com.leetcode.dubbo.provider.api.HelloService;
+import com.dubbo.provider.api.HelloService;
 
 public class HelloServiceImpl implements HelloService {
 

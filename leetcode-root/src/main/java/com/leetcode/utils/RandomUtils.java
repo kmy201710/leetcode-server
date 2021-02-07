@@ -2,6 +2,8 @@ package com.leetcode.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+
 /**
  * 随机数工具类  https://blog.csdn.net/sinat_32829963/article/details/70232076
  *
@@ -64,7 +66,8 @@ public class RandomUtils {
 
     public static int[] randomCommon2(int n) {
         int[] nums = helper(n);
-        return SortUtils.selectionSort(nums);
+        Arrays.sort(nums);
+        return nums;
     }
 
     public static int[] helper(int n) {

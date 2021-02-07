@@ -1,6 +1,5 @@
 package com.leetcode;
 
-import com.leetcode.demo.JdbcDemo;
 import com.leetcode.demo.SpiDemo;
 import com.leetcode.register.LocalRegister;
 
@@ -21,24 +20,38 @@ public class MainStart {
     public static List<String> registNames = new ArrayList<String>();
 
     static {
-//        registNames.add("solution001");
-//        registNames.add("solution002");
-//        registNames.add("solution003");
-//        registNames.add("solution004");
-        registNames.add("solution011");
-        registNames.add("solution012");
+        registNames.add("spiDemo");
+//        registNames.add("solutionV0001");
+//        registNames.add("solutionV0002");
+//        registNames.add("solutionV0003");
+//        registNames.add("solutionV0004");
+//        registNames.add("solutionV0011");
+//        registNames.add("solutionV0012");
+//        registNames.add("solutionV0014");
+        registNames.add("solutionV0015"); // com.leetcode.model.ListNode.popVal
+//        registNames.add("solutionV0075");
+        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode.popVal
 
-        LocalRegister.regist("jdbcDemo", JdbcDemo.class);
         LocalRegister.regist("spiDemo", SpiDemo.class);
-        LocalRegister.regist("solution001", Solution001.class);
-        LocalRegister.regist("solution002", Solution002.class);
-        LocalRegister.regist("solution003", Solution003.class);
-        LocalRegister.regist("solution004", Solution004.class);
-        LocalRegister.regist("solution011", Solution011.class);
-        LocalRegister.regist("solution012", Solution012.class);
-        LocalRegister.regist("solution013", Solution013.class);
-        LocalRegister.regist("solution014", Solution014.class);
-        LocalRegister.regist("solution015", Solution015.class);
+        LocalRegister.regist("solutionV0001", SolutionV0001.class);
+        LocalRegister.regist("solutionV0002", SolutionV0002.class);
+        LocalRegister.regist("solutionV0003", SolutionV0003.class);
+        LocalRegister.regist("solutionV0004", SolutionV0004.class);
+        LocalRegister.regist("solutionV0011", SolutionV0011.class);
+        LocalRegister.regist("solutionV0012", SolutionV0012.class);
+        LocalRegister.regist("solutionV0013", SolutionV0013.class);
+        LocalRegister.regist("solutionV0014", SolutionV0014.class);
+        LocalRegister.regist("solutionV0015", SolutionV0015.class);
+        LocalRegister.regist("solutionV0075", SolutionV0075.class);
+
+        LocalRegister.regist("solutionV0101", SolutionV0101.class);
+        LocalRegister.regist("solutionV0135", SolutionV0135.class);
+
+        LocalRegister.regist("solutionV0201", SolutionV0201.class);
+        LocalRegister.regist("solutionV0202", SolutionV0202.class);
+
+        LocalRegister.regist("solutionV0322", SolutionV0322.class);
+        LocalRegister.regist("solutionV0344", SolutionV0344.class);
     }
 
     public static void main(String[] args) {

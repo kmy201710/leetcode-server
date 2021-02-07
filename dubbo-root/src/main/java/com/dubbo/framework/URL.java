@@ -1,4 +1,4 @@
-package com.leetcode.dubbo.framework;
+package com.dubbo.framework;
 
 public class URL {
     private String hostname;

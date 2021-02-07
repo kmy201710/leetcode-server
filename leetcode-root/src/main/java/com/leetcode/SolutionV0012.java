@@ -11,19 +11,19 @@ import java.util.Arrays;
 /**
  * @Author hhe
  * @Date 2021/2/5 16:23
- * @Description 12. 整数转罗马数字
+ * @Description 12. 整数转罗马数字（中等）
  * 罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。
  * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/integer-to-roman/
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Solution012 {
-    private static Logger logger = Logger.getLogger(Solution012.class);
+public class SolutionV0012 {
+    private static Logger logger = Logger.getLogger(SolutionV0012.class);
 
     private static ListNode node = ListNode.get(new Roman());
 
-    public Solution012() {
+    public SolutionV0012() {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
@@ -32,6 +32,7 @@ public class Solution012 {
 
         String result = intToRoman(nums);
         logger.info("intToRoman = " + result);
+        new SolutionV0013(result);
         logger.info("=====end=====");
     }
 
@@ -43,16 +44,16 @@ public class Solution012 {
         return helper(Integer.valueOf(s), "");
     }
 
-    private String helper(int num, String val) {
+    private String helper(int num, String s) {
         if (num == 0) {
-            return val;
+            return s;
         }
         int n = num / node.val;
-        int carry = num % node.val;
+        num = num % node.val;
         for (int i = 0; i < n; i++) {
-            val += node.name;
+            s += node.name;
         }
         node = node.next;
-        return helper(carry, val);
+        return helper(num, s);
     }
 }

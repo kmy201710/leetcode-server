@@ -1,4 +1,4 @@
-package com.leetcode.dubbo.consumer;
+package com.dubbo.consumer;
 
 public class Consumer {
 

@@ -12,17 +12,17 @@ import java.util.List;
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
- * @Description 4. 寻找两个正序数组的中位数
+ * @Description 4. 寻找两个正序数组的中位数（困难）
  * 给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数。
  * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Solution004 {
-    private static Logger logger = Logger.getLogger(Solution004.class);
+public class SolutionV0004 {
+    private static Logger logger = Logger.getLogger(SolutionV0004.class);
 
-    public Solution004() {
+    public SolutionV0004() {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
@@ -37,9 +37,9 @@ public class Solution004 {
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        ListNode l1 = new ListNode(), l2 = new ListNode();
+        ListNode l1 = ListNode.get(nums1), l2 = ListNode.get(nums2);
         List<Integer> list = new ArrayList();
-        helper(l1.push(nums1), l2.push(nums2), list);
+        helper(l1, l2, list);
 
         int count = list.size();
         if (count % 2 == 0) {
