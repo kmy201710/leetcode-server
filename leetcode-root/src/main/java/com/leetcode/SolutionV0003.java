@@ -27,17 +27,17 @@ public class SolutionV0003 {
         String s = RandomUtils.randomCommon(MockUtils.str, n);
         logger.info("s = " + s);
 
-        int result = lengthOfLongestSubstring(s.toCharArray());
+        int result = lengthOfLongestSubstring(s);
         logger.info("lengthOfLongestSubstring = " + result);
         logger.info("=====end=====");
     }
 
-    public int lengthOfLongestSubstring(char[] c) {
-        return helper(c, 0, 0);
+    public int lengthOfLongestSubstring(String s) {
+        return helper(s.toCharArray(), 0, 0);
     }
 
     private int helper(char[] c, int index, int length) {
-        Map<Character, Integer> map = new HashMap();
+        Map<Character, Integer> map = new HashMap<>();
         for (int i = index; i < c.length; i++) {
             if (map.containsKey(c[i])) {
                 return helper(c, i, Math.max(i - index, length));

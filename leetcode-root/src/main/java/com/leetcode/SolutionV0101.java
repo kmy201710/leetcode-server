@@ -46,5 +46,4 @@ public class SolutionV0101 {
         if (n1 == null || n2 == null) return false;
         return n1.val == n2.val && check(n1.left, n2.right) && check(n1.right, n2.left);
     }
-
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @Description
  */
 public class MockUtils {
-    public static String str = "a#23fafddcsc";
+    public static String str = "aq!faddc";
 
     /**
      * 模拟输入

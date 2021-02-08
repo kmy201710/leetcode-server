@@ -74,17 +74,4 @@ public class ListNode {
     public static ListNode get(int... nums) {
         return new ListNode().push(nums);
     }
-
-    public static ListNode get(Roman r) {
-        ListNode head = null, tail = null;
-        for (int i = 0; i < 7; i++) {
-            if (head == null) {
-                head = tail = new ListNode(r.num[i], r.str[i]);
-            } else {
-                tail.next = new ListNode(r.num[i], r.str[i]);
-                tail = tail.next;
-            }
-        }
-        return head;
-    }
 }

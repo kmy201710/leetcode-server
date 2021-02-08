@@ -4,9 +4,7 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author hhe
@@ -23,27 +21,84 @@ import java.util.Map;
 public class SolutionV0001 {
     private static Logger logger = Logger.getLogger(SolutionV0001.class);
 
+    private static List<int[]> list = new ArrayList<>();
+
     public SolutionV0001() {
         // 模拟输入
         int n = MockUtils.get(10);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(0, 20, n);
+        int[] nums = RandomUtils.randomCommon(-10, 10, n);
+        Arrays.sort(nums);
         logger.info("nums = " + Arrays.toString(nums));
 
-        int[] result = twoSum(nums, 9);
-        logger.info("twoSum = " + Arrays.toString(result));
+        twoSum(nums, 0);
+        logger.info("twoSum = ");
+        list.stream().forEach(p -> {
+            logger.info(Arrays.toString(p));
+        });
+
+        int[] nums1 = RandomUtils.randomCommon(-10, 10, n);
+        int[] nums2 = RandomUtils.randomCommon(-10, 10, n);
+        logger.info("nums1 = " + Arrays.toString(nums1));
+        logger.info("nums2 = " + Arrays.toString(nums2));
+        int twoSumCount = twoSumCount(nums1, nums2);
+        logger.info("twoSumCount = " + twoSumCount);
         logger.info("=====end=====");
     }
 
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap();
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                int[] arr = {map.get(target - nums[i]), i};
-                return arr;
-            }
-            map.put(nums[i], i);
+    public void twoSum(int[] nums, int target) { // public int[] twoSum(int[] nums, int target) {
+        if (nums.length < 2 && nums[0] + nums[1] > target) {
+            return;
         }
-        return new int[0];
+        helper(nums, target, 0, nums.length - 1);
+    }
+
+    private void helper(int[] nums, int target, int left, int right) {
+        if (left == right) {
+            return;
+        }
+        int sum = nums[left] + nums[right];
+        if (sum == target) {
+            list.add(new int[]{left, right, nums[left], nums[right]});
+            return;
+        } else if (sum < target) {
+            while (left < right && nums[left] == nums[left + 1]) {
+                left++;
+            }
+            left++;
+        } else {
+            while (left < right && nums[right] == nums[right - 1]) {
+                right--;
+            }
+            right--;
+        }
+        helper(nums, target, left, right);
+    }
+
+    public int twoSumCount(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int res = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            if (map.containsKey(nums1[i])) {
+                res += map.get(nums1[i]);
+                map.put(nums1[i], map.get(nums1[i]) + 1);
+            } else {
+                res += helper(nums2, nums1[i], 0, nums2.length-1, 0);
+                map.put(nums1[i], 1);
+            }
+        }
+        return res;
+    }
+
+    private int helper(int[] nums, int target, int left, int right, int res) {
+        if (left == right) {
+            return res;
+        }
+        int sum = nums[left];
+        if (sum + target == 0) {
+            res++;
+        }
+        left++;
+        return helper(nums, target, left, right, res);
     }
 }

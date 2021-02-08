@@ -21,7 +21,7 @@ import java.util.Arrays;
 public class SolutionV0012 {
     private static Logger logger = Logger.getLogger(SolutionV0012.class);
 
-    private static ListNode node = ListNode.get(new Roman());
+    private static ListNode node = Roman.get().node;
 
     public SolutionV0012() {
         // 模拟输入

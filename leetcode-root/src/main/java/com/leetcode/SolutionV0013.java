@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 public class SolutionV0013 {
     private static Logger logger = Logger.getLogger(SolutionV0013.class);
 
-    private static ListNode node = ListNode.get(new Roman());
+    private static ListNode node = Roman.get().node;
 
     public SolutionV0013(String s) {
         int result = romanToInt(s);

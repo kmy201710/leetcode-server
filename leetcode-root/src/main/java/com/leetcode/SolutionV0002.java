@@ -5,9 +5,7 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author hhe
@@ -24,7 +22,7 @@ import java.util.List;
 public class SolutionV0002 {
     private static Logger logger = Logger.getLogger(SolutionV0002.class);
 
-    private static List<Integer> list = new ArrayList();
+    private static ListNode node = new ListNode();
 
     public SolutionV0002() {
         // 模拟输入
@@ -35,17 +33,18 @@ public class SolutionV0002 {
         logger.info("nums1 = " + Arrays.toString(nums1));
         logger.info("nums2 = " + Arrays.toString(nums2));
 
-        addTwoNumbers(nums1, nums2);
-        logger.info("addTwoNumbers = " + list.toString());
+        ListNode result = addTwoNumbers(nums1, nums2);
+        logger.info("addTwoNumbers = " + Arrays.toString(result.popVal()));
         logger.info("=====end=====");
     }
 
-    public void addTwoNumbers(int[] nums1, int[] nums2) {
+    public ListNode addTwoNumbers(int[] nums1, int[] nums2) {
         ListNode l1 = ListNode.get(nums1), l2 = ListNode.get(nums2);
         int carry = helper(l1, l2, 0);
         if (carry > 0) {
-            list.add(carry);
+            node.push(carry);
         }
+        return node;
     }
 
     private int helper(ListNode l1, ListNode l2, int carry) {
@@ -57,7 +56,7 @@ public class SolutionV0002 {
         int sum = n1 + n2 + carry;
         carry = sum / 10;
 
-        list.add(sum % 10);
+        node.push(sum % 10);
         if (l1 != null) {
             l1 = l1.next;
         }

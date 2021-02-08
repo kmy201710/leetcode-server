@@ -22,7 +22,7 @@ import java.util.List;
 public class SolutionV0344 {
     private static Logger logger = Logger.getLogger(SolutionV0344.class);
 
-    private static List<Character> list = new ArrayList();
+    private static List<Character> list = new ArrayList<>();
 
     public SolutionV0344() {
         // 模拟输入
@@ -36,7 +36,7 @@ public class SolutionV0344 {
         logger.info("=====end=====");
     }
 
-    public void reverseString(String s) {
+    public void reverseString(String s) { // public void reverseString(char[] s) {
         helper(s.toCharArray(), 0);
     }
 
