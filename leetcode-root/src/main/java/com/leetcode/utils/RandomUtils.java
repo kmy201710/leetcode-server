@@ -45,7 +45,19 @@ public class RandomUtils {
     }
 
     public static int[] randomCommon(int n) {
-        return randomCommon(0, 10, n);
+        return randomCommon(0, 10, n % 10); // randomCommon(0, 10, n);
+    }
+
+    public static int randomCommon(int limit, int n) {
+        int[] nums = randomCommon(0, 100, n);
+        int result = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (result > limit) {//如果result比最小值还小，说明溢出了
+                break;
+            }
+            result = result * 10 + nums[i];
+        }
+        return result;
     }
 
     public static String randomCommon(String str, int n) {
@@ -54,14 +66,15 @@ public class RandomUtils {
         }
         int max = str.length();
         char[] c = str.toCharArray();
-        int[] nums = randomCommon(n);
+        int[] nums = randomCommon(0, max, n % 10); // randomCommon(0, max, n);
         String result = "";
         for (int i = 0; i < n; i++) {
             if (nums[i] < max) {
                 result += String.valueOf(c[nums[i]]);
             }
         }
-        return result;
+        result = SplitUtils.splitNotNumber(result);
+        return result == "" ? randomCommon(str, n) : result;
     }
 
     public static int[] randomCommon2(int n) {
@@ -71,7 +84,7 @@ public class RandomUtils {
     }
 
     public static int[] helper(int n) {
-        int[] nums = randomCommon(0, 10, n);
+        int[] nums = randomCommon(0, 100, n);
         if (nums[0] < 5) {
             nums = helper(n);
             return nums;

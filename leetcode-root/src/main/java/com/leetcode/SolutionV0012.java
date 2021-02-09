@@ -23,17 +23,18 @@ public class SolutionV0012 {
 
     private static ListNode node = Roman.get().node;
 
-    public SolutionV0012() {
+    public SolutionV0012(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(n);
         logger.info("nums = " + Arrays.toString(nums));
 
         String result = intToRoman(nums);
         logger.info("intToRoman = " + result);
-        new SolutionV0013(result);
         logger.info("=====end=====");
+
+        new SolutionV0013().romanToInt(result);
     }
 
     public String intToRoman(int[] nums) {

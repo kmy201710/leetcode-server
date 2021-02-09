@@ -19,13 +19,11 @@ public class SolutionV0013 {
 
     private static ListNode node = Roman.get().node;
 
-    public SolutionV0013(String s) {
-        int result = romanToInt(s);
-        logger.info("romanToInt = " + result);
-    }
-
     public int romanToInt(String s) {
-        return helper(s.toCharArray(), 0, 0);
+        int result = helper(s.toCharArray(), 0, 0);
+        logger.info("romanToInt = " + result);
+        logger.info("=====start=====");
+        return result;
     }
 
     private int helper(char[] c, int index, int num) {

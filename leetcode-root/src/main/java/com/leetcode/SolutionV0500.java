@@ -29,9 +29,9 @@ public class SolutionV0500 {
 
     private static List<String> list = new ArrayList<>();
 
-    public SolutionV0500() {
+    public SolutionV0500(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(n);
         logger.info("nums = " + Arrays.toString(nums));
@@ -55,7 +55,7 @@ public class SolutionV0500 {
     }
 
     private void helper(String word, int index, int res) {
-        if (index == word.length()) {
+        if (word.length() == index) {
             list.add(word);
             return;
         }

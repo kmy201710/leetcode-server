@@ -12,12 +12,13 @@ import java.util.ServiceLoader;
  */
 public class SpiDemo {
 
-    public SpiDemo() {
+    public SpiDemo(int max) {
         ServiceLoader<HelloService> serviceLoader = ServiceLoader.load(HelloService.class);
         Iterator<HelloService> iterator = serviceLoader.iterator();
         while (iterator.hasNext()) {
+            max++;
             HelloService helloService = iterator.next();
-            helloService.sayHello("host");
+            System.out.println("helloService = " + helloService.say("host-" + max));
         }
         System.out.println("=====end=====");
     }

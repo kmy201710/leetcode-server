@@ -24,9 +24,9 @@ import java.util.Arrays;
 public class SolutionV0202 {
     private static Logger logger = Logger.getLogger(SolutionV0202.class);
 
-    public SolutionV0202() {
+    public SolutionV0202(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(n);
         logger.info("nums = " + Arrays.toString(nums));

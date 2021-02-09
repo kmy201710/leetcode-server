@@ -5,8 +5,7 @@ import com.leetcode.spi.HelloService;
 public class BServiceImpl implements HelloService {
 
     @Override
-    public String sayHello(String userName) {
-        System.out.println("=====B=====");
-        return "Hello: " + userName;
+    public String say(String userName) {
+        return "B say: " + userName;
     }
 }

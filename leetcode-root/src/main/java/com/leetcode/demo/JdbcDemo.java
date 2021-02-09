@@ -30,11 +30,11 @@ public class JdbcDemo {
         }
     }
 
-    public JdbcDemo() {
+    public JdbcDemo(int max) {
         Connection con = getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from t_code order by id desc";
+        String sql = "select * from t_code order by id desc limit " + max;
         try {
             ps = con.prepareStatement(sql);
             if (ps.execute()) {

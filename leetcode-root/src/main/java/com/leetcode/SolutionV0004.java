@@ -22,9 +22,9 @@ import java.util.List;
 public class SolutionV0004 {
     private static Logger logger = Logger.getLogger(SolutionV0004.class);
 
-    public SolutionV0004() {
+    public SolutionV0004(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums1 = RandomUtils.randomCommon2(n);
         int[] nums2 = RandomUtils.randomCommon2(nums1[0]);

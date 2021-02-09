@@ -20,9 +20,9 @@ import java.util.Arrays;
 public class SolutionV0101 {
     private static Logger logger = Logger.getLogger(SolutionV0101.class);
 
-    public SolutionV0101() {
+    public SolutionV0101(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums1 = RandomUtils.randomCommon2(n);
         int[] nums2 = RandomUtils.randomCommon2(nums1[0]);
@@ -30,6 +30,7 @@ public class SolutionV0101 {
         logger.info("nums2 = " + Arrays.toString(nums2));
 
         TreeNode root = TreeNode.get(nums1);
+        root = root.push(nums2);
         logger.info("root = " + Arrays.toString(root.popVal()));
 
         boolean result = isSymmetric(root);

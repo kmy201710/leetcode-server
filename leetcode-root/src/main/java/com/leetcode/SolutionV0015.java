@@ -23,9 +23,9 @@ public class SolutionV0015 {
 
     private static List<int[]> list = new ArrayList<>();
 
-    public SolutionV0015() {
+    public SolutionV0015(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(-10, 10, n);
         Arrays.sort(nums);

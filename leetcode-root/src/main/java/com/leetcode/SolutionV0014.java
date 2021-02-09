@@ -20,9 +20,9 @@ import java.util.Arrays;
 public class SolutionV0014 {
     private static Logger logger = Logger.getLogger(SolutionV0014.class);
 
-    public SolutionV0014() {
+    public SolutionV0014(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(n);
         logger.info("nums = " + Arrays.toString(nums));

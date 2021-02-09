@@ -24,12 +24,12 @@ public class SolutionV0002 {
 
     private static ListNode node = new ListNode();
 
-    public SolutionV0002() {
+    public SolutionV0002(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
-        int[] nums1 = RandomUtils.randomCommon(n);
-        int[] nums2 = RandomUtils.randomCommon(nums1[0]);
+        int[] nums1 = RandomUtils.randomCommon2(n);
+        int[] nums2 = RandomUtils.randomCommon2(nums1[0]);
         logger.info("nums1 = " + Arrays.toString(nums1));
         logger.info("nums2 = " + Arrays.toString(nums2));
 
@@ -42,7 +42,7 @@ public class SolutionV0002 {
         ListNode l1 = ListNode.get(nums1), l2 = ListNode.get(nums2);
         int carry = helper(l1, l2, 0);
         if (carry > 0) {
-            node.push(carry);
+            node = node.push(carry);
         }
         return node;
     }
@@ -56,7 +56,7 @@ public class SolutionV0002 {
         int sum = n1 + n2 + carry;
         carry = sum / 10;
 
-        node.push(sum % 10);
+        node = node.push(sum % 10);
         if (l1 != null) {
             l1 = l1.next;
         }

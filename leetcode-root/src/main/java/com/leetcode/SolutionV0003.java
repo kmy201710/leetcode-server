@@ -20,9 +20,9 @@ import java.util.Map;
 public class SolutionV0003 {
     private static Logger logger = Logger.getLogger(SolutionV0003.class);
 
-    public SolutionV0003() {
+    public SolutionV0003(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         String s = RandomUtils.randomCommon(MockUtils.str, n);
         logger.info("s = " + s);

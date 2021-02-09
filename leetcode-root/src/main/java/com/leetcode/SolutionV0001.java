@@ -23,12 +23,11 @@ public class SolutionV0001 {
 
     private static List<int[]> list = new ArrayList<>();
 
-    public SolutionV0001() {
+    public SolutionV0001(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(-10, 10, n);
-        Arrays.sort(nums);
         logger.info("nums = " + Arrays.toString(nums));
 
         twoSum(nums, 0);
@@ -41,12 +40,14 @@ public class SolutionV0001 {
         int[] nums2 = RandomUtils.randomCommon(-10, 10, n);
         logger.info("nums1 = " + Arrays.toString(nums1));
         logger.info("nums2 = " + Arrays.toString(nums2));
-        int twoSumCount = twoSumCount(nums1, nums2);
-        logger.info("twoSumCount = " + twoSumCount);
+        int result = twoSumCount(nums1, nums2);
+        logger.info("twoSumCount = " + result);
         logger.info("=====end=====");
     }
 
     public void twoSum(int[] nums, int target) { // public int[] twoSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        logger.info("nums = " + Arrays.toString(nums));
         if (nums.length < 2 && nums[0] + nums[1] > target) {
             return;
         }

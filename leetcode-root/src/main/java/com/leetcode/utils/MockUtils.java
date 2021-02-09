@@ -8,22 +8,22 @@ import java.util.Scanner;
  * @Description
  */
 public class MockUtils {
-    public static String str = "aq!faddc";
+    public static String str = "!a23q2ffrddcaddcad12";
 
     /**
      * 模拟输入
      */
-    public static int get(int tag) {
+    public static int get(int max) {
         String mock = System.getProperty("mock");
-        int n;
+        int num;
         if (mock == null || mock.equals("")) {
             // 接收从控制台输入
             Scanner input = new Scanner(System.in);
-            n = input.nextInt();
+            num = input.nextInt();
         } else {
-            n = Integer.valueOf(mock);
+            num = Integer.valueOf(mock);
         }
-        return n < 3 ? 3 : n % tag;
+        return num < 3 ? 3 : num % max;
     }
 
 }

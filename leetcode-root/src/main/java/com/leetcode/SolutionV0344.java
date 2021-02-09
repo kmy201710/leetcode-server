@@ -24,9 +24,9 @@ public class SolutionV0344 {
 
     private static List<Character> list = new ArrayList<>();
 
-    public SolutionV0344() {
+    public SolutionV0344(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         String s = RandomUtils.randomCommon(MockUtils.str, n);
         logger.info("s = " + s);

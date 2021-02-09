@@ -23,15 +23,42 @@ import java.util.Arrays;
 public class SolutionV0135 {
     private static Logger logger = Logger.getLogger(SolutionV0135.class);
 
-    public SolutionV0135() {
+    public SolutionV0135(int max) {
         // 模拟输入
-        int n = MockUtils.get(10);
+        int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(n);
         logger.info("nums = " + Arrays.toString(nums));
+
+        int result = candy(nums);
+        logger.info("candy = " + result);
+        logger.info("=====end=====");
     }
 
     public int candy(int[] ratings) {
-        return 0;
+        int n = ratings.length;
+        int[] left = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && ratings[i] > ratings[i - 1]) {
+                left[i] = left[i - 1] + 1;
+            } else {
+                left[i] = 1;
+            }
+        }
+        return helper(ratings, left, n-1, 0, 0);
+    }
+
+    private int helper(int[] ratings, int[] left, int index, int pre, int res) {
+        if (index == 0) {
+            return res;
+        }
+        if (index < ratings.length - 1 && ratings[index] > ratings[index + 1]) {
+            pre++;
+        } else {
+            pre = 1;
+        }
+        res += Math.max(left[index], pre);
+        index--;
+        return helper(ratings, left, index, pre, res);
     }
 }
