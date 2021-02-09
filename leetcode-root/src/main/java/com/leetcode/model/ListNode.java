@@ -58,7 +58,7 @@ public class ListNode {
 
     public ListNode push(int x) {
         if (val == -1) {
-            return helper(null, x);
+            return new ListNode(x);
         }
         return helper(this, x);
     }

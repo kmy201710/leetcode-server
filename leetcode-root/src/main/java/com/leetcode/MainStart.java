@@ -68,8 +68,10 @@ public class MainStart {
          * 344. 反转字符串（简单）
          * 500. 键盘行（简单）
          */
-        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
+//        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
         registNames.add("solutionV0135");
+        registNames.add("solutionV0201");
+
         registNames.add("solutionV0500");
 
 

@@ -22,14 +22,12 @@ import java.util.*;
 public class SolutionV0002 {
     private static Logger logger = Logger.getLogger(SolutionV0002.class);
 
-    private static ListNode node = new ListNode();
-
     public SolutionV0002(int max) {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int[] nums1 = RandomUtils.randomCommon2(n);
-        int[] nums2 = RandomUtils.randomCommon2(nums1[0]);
+        int[] nums1 = RandomUtils.randomCommon(n);
+        int[] nums2 = RandomUtils.randomCommon(nums1[0]);
         logger.info("nums1 = " + Arrays.toString(nums1));
         logger.info("nums2 = " + Arrays.toString(nums2));
 
@@ -40,29 +38,27 @@ public class SolutionV0002 {
 
     public ListNode addTwoNumbers(int[] nums1, int[] nums2) {
         ListNode l1 = ListNode.get(nums1), l2 = ListNode.get(nums2);
-        int carry = helper(l1, l2, 0);
-        if (carry > 0) {
-            node = node.push(carry);
-        }
-        return node;
+        return helper(l1, l2, 0, new ListNode());
     }
 
-    private int helper(ListNode l1, ListNode l2, int carry) {
+    private ListNode helper(ListNode l1, ListNode l2, int carry, ListNode node) {
         if (l1 == null && l2 == null) {
-            return carry;
+            if (carry > 0) {
+                node = node.push(carry);
+            }
+            return node;
         }
         int n1 = l1 != null ? l1.val : 0;
         int n2 = l2 != null ? l2.val : 0;
         int sum = n1 + n2 + carry;
         carry = sum / 10;
 
-        node = node.push(sum % 10);
         if (l1 != null) {
             l1 = l1.next;
         }
         if (l2 != null) {
             l2 = l2.next;
         }
-        return helper(l1, l2, carry);
+        return helper(l1, l2, carry, node.push(sum % 10));
     }
 }

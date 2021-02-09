@@ -4,7 +4,8 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author hhe
@@ -23,11 +24,45 @@ public class SolutionV0201 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(n);
-        logger.info("nums = " + Arrays.toString(nums));
+        int num1 = RandomUtils.randomCommon(Integer.MAX_VALUE, n);
+        int num2 = RandomUtils.randomCommon(Integer.MAX_VALUE, n);
+        logger.info("nums1 = " + num1);
+        logger.info("nums2 = " + num2);
+
+        int result = rangeBitwiseAnd(num1, num2);
+        logger.info("rangeBitwiseAnd = " + result);
+        logger.info("=====end=====");
     }
 
     public int rangeBitwiseAnd(int m, int n) {
-        return 0;
+        if (m > n) {
+            return rangeBitwiseAnd(n, m);
+        }
+        List<Integer> list = new ArrayList<>();
+        helper(m, n, 0, list);
+
+        int num = 0;
+        for (int i = 0; i < list.size(); i++) {
+            int shift = list.get(i);
+            num += (1 << shift);
+        }
+        return num;
+    }
+
+    private List<Integer> helper(int m, int n, int shift, List<Integer> list) {
+        if (m == 1) {
+            if ((n & 1) == 1) {
+                list.add(shift);
+            }
+            return list;
+        }
+        if ((m & 1) == 1 && (n & 1) == 1) {
+            list.add(shift);
+        }
+        // 找到公共前缀
+        m = m >> 1;
+        n = n >> 1;
+        shift++;
+        return helper(m, n, shift, list);
     }
 }

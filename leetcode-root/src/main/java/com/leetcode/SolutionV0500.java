@@ -33,12 +33,9 @@ public class SolutionV0500 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(n);
-        logger.info("nums = " + Arrays.toString(nums));
-
         String[] words = new String[n];
         for (int i = 0; i < n; i++) {
-            words[i] = RandomUtils.randomCommon(MockUtils.str, nums[i]);
+            words[i] = RandomUtils.randomCommon(MockUtils.str, n);
         }
         logger.info("words = " + Arrays.toString(words));
 
@@ -48,16 +45,18 @@ public class SolutionV0500 {
     }
 
     public void findWords(String[] words) { // public String[] findWords(String[] words) {
+        int res;
         for (int i = 0; i < words.length; i++) {
             String word = words[i].toLowerCase();
-            helper(word, 0, 0);
+            res = helper(word, 0, 0);
+            logger.info("helper = " + res);
         }
     }
 
-    private void helper(String word, int index, int res) {
+    private int helper(String word, int index, int res) {
         if (word.length() == index) {
             list.add(word);
-            return;
+            return res;
         }
         char c = word.charAt(index);
         if (index == 0 || res == 0) {
@@ -68,17 +67,17 @@ public class SolutionV0500 {
             } else if(check(Keyboard.set3, c)) {
                 res = 3;
             } else {
-                return;
+                return res;
             }
         } else if (res == 1 && !check(Keyboard.set1, c)) {
-            return;
+            return 0;
         } else if (res == 2 && !check(Keyboard.set2, c)) {
-            return;
+            return 0;
         } else if (res == 3 && !check(Keyboard.set3, c)) {
-            return;
+            return 0;
         }
         index++;
-        helper(word, index, res);
+        return helper(word, index, res);
     }
 
     private boolean check(char[] set, char c) {

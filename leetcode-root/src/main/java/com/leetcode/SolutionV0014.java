@@ -24,12 +24,9 @@ public class SolutionV0014 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(n);
-        logger.info("nums = " + Arrays.toString(nums));
-
         String[] strs = new String[n];
         for (int i = 0; i < n; i++) {
-            strs[i] = "leet" + RandomUtils.randomCommon(MockUtils.str, nums[i]);
+            strs[i] = "leet" + RandomUtils.randomCommon(MockUtils.str, n);
         }
         logger.info("strs = " + Arrays.toString(strs));
 

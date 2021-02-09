@@ -83,10 +83,11 @@ public class SolutionV0001 {
             if (map.containsKey(nums1[i])) {
                 res += map.get(nums1[i]);
                 map.put(nums1[i], map.get(nums1[i]) + 1);
-            } else {
-                res += helper(nums2, nums1[i], 0, nums2.length-1, 0);
-                map.put(nums1[i], 1);
+                continue;
             }
+            map.put(nums1[i], 1);
+            res += helper(nums2, nums1[i], 0, nums2.length - 1, 0);
+            logger.info("helper = " + res);
         }
         return res;
     }
