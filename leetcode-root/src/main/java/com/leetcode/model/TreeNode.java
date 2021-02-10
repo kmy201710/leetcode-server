@@ -10,6 +10,7 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
+    public TreeNode last;
 
     public static TreeNode instance = null;
 
@@ -31,9 +32,8 @@ public class TreeNode {
         if (val == -1) {
             return null;
         }
+        instance = this;
         List<Integer> list = new ArrayList();
-        list.add(val);
-        instance = left;
         while (instance != null) {
             list.add(instance.val);
             instance = instance.left;
@@ -48,29 +48,40 @@ public class TreeNode {
     public TreeNode push(int... nums) {
         instance = this;
         for (int i = 0; i < nums.length; i++) {
-            instance = instance.push(3, nums[i]);
+            instance = instance.push(nums[i]);
         }
         return instance;
     }
 
-    public TreeNode push(int level, int x) {
+    public TreeNode push(int x) {
         if (val == -1) {
-            return helper(null, level, x);
+            return new TreeNode(x);
         }
-        return helper(this, level, x);
+        last = new TreeNode(x);
+        return helper(this, 5, x);
     }
 
-    public TreeNode helper(TreeNode node, int level, int x) {
+    public TreeNode helper(TreeNode node, int skip, int x) {
         if (node == null) {
             return new TreeNode(x);
         }
-        if (level == x) {
-            node.left = helper(node.left, level, -1);
+        if (x % skip == 0) {
+            node.left = helper(node.left, skip, -1);
         } else {
-            node.left = helper(node.left, level, x);
+            node.left = helper(node.left, skip, x);
         }
-        node.right = helper(node.right, level, x);
+        node.right = helper(node.right, skip, x);
         return node;
+    }
+
+    public boolean contains(int x) {
+        if (val == -1) {
+            return false;
+        }
+        if (val == x) {
+            return true;
+        }
+        return left == null ? false : left.contains(x) || right == null ? false : right.contains(x);
     }
 
     public static TreeNode get(int... nums) {

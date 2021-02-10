@@ -28,7 +28,6 @@ public class SolutionV0018 {
         int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(-10, 10, n);
-        Arrays.sort(nums);
         logger.info("nums = " + Arrays.toString(nums));
 
         fourSum(nums, 0);
@@ -40,7 +39,9 @@ public class SolutionV0018 {
     }
 
     public void fourSum(int[] nums, int target) { // public List<List<Integer>> fourSum(int[] nums, int target) {
-        if (nums.length < 4 && nums[0] + nums[1] + nums[2] + nums[3] > 0) {
+        Arrays.sort(nums);
+        logger.info("nums = " + Arrays.toString(nums));
+        if (nums.length < 4 || nums[0] + nums[1] + nums[2] + nums[3] > 0) {
             return;
         }
         helper(nums, target, 0, 1, 2, nums.length - 1);
@@ -49,12 +50,12 @@ public class SolutionV0018 {
     private void helper(int[] nums, int target, int i, int j, int left, int right) {
         if (left == right) {
             j++;
-            if (j == left) {
+            if (j == left  || left == nums.length - 1) {
                 i++;
-                if (i == nums.length - 3) {
-                    return;
-                }
                 j = i + 1;
+            }
+            if (i == nums.length - 3) {
+                return;
             }
             left = j + 1;
             right = nums.length - 1;

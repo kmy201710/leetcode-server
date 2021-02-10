@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @Author hhe
- * @Date 2021/2/5 16:23
+ * @Date 2021/2/9 11:00
  * @Description 201. 数字范围按位与（中等）
  * 给定范围 [m, n]，其中 0 <= m <= n <= 2147483647，返回此范围内所有数字的按位与（包含 m, n 两端点）。
  * <p>
@@ -24,8 +24,8 @@ public class SolutionV0201 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int num1 = RandomUtils.randomCommon(Integer.MAX_VALUE, n);
-        int num2 = RandomUtils.randomCommon(Integer.MAX_VALUE, n);
+        int num1 = RandomUtils.randomCommon(max, n);
+        int num2 = RandomUtils.randomCommon(max, n);
         logger.info("nums1 = " + num1);
         logger.info("nums2 = " + num2);
 

@@ -28,7 +28,6 @@ public class SolutionV0015 {
         int n = MockUtils.get(max);
         // 获取随机数
         int[] nums = RandomUtils.randomCommon(-10, 10, n);
-        Arrays.sort(nums);
         logger.info("nums = " + Arrays.toString(nums));
 
         threeSum(nums, 0);
@@ -40,7 +39,9 @@ public class SolutionV0015 {
     }
 
     public void threeSum(int[] nums, int target) { // public List<List<Integer>> threeSum(int[] nums) {
-        if (nums.length < 3 && nums[0] + nums[1] + nums[2] > 0) {
+        Arrays.sort(nums);
+        logger.info("nums = " + Arrays.toString(nums));
+        if (nums.length < 3 || nums[0] + nums[1] + nums[2] > 0) {
             return;
         }
         helper(nums, target, 0, 1, nums.length - 1);

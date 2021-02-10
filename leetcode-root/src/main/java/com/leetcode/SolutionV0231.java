@@ -4,9 +4,6 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Author hhe
  * @Date 2021/2/9 11:00
@@ -21,13 +18,11 @@ import java.util.List;
 public class SolutionV0231 {
     private static Logger logger = Logger.getLogger(SolutionV0231.class);
 
-    private static List<Integer> list = new ArrayList<>();
-
     public SolutionV0231(int max) {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int num = RandomUtils.randomCommon(Integer.MAX_VALUE, n);
+        int num = RandomUtils.randomCommon(max, n);
         logger.info("num = " + num);
 
         boolean result = isPowerOfTwo(num);

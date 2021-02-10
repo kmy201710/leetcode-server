@@ -4,11 +4,9 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
-import java.util.Arrays;
-
 /**
  * @Author hhe
- * @Date 2021/2/5 16:23
+ * @Date 2021/2/9 11:00
  * @Description 202. 快乐数（简单）
  * 编写一个算法来判断一个数 n 是不是快乐数。
  * 「快乐数」定义为：
@@ -28,11 +26,30 @@ public class SolutionV0202 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int[] nums = RandomUtils.randomCommon(n);
-        logger.info("nums = " + Arrays.toString(nums));
+        int num = RandomUtils.randomCommon(max, n);
+        logger.info("num = " + num);
+
+        boolean result = isHappy(num);
+        logger.info("isHappy = " + result);
     }
 
     public boolean isHappy(int n) {
-        return true;
+        int slowRunner = n;
+        int fastRunner = bitSquareSum(n);
+        while (fastRunner != 1 && slowRunner != fastRunner) {
+            slowRunner = bitSquareSum(slowRunner);
+            fastRunner = bitSquareSum(bitSquareSum(fastRunner));
+        }
+        return fastRunner == 1;
+    }
+
+    public int bitSquareSum(int n) {
+        int sum = 0;
+        while (n > 0) {
+            int d = n % 10;
+            n = n / 10;
+            sum += d * d;
+        }
+        return sum;
     }
 }

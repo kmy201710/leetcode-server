@@ -21,6 +21,9 @@ import java.util.List;
 public class MainStart {
     public static int max = 100;
 
+    //    public static String solution = "solutionLCP01";
+    public static String solution = "solutionV0322";
+
     public static List<String> registNames = new ArrayList<String>();
 
     static {
@@ -31,8 +34,9 @@ public class MainStart {
          * LCP 01. 猜数字（简单）
          */
 //        registNames.add("solutionLCP01");
-        LocalRegister.regist("solutionLCP01", SolutionLCP01.class);
+//        LocalRegister.regist("solutionLCP01", SolutionLCP01.class);
 
+        /********************************* registNames *********************************/
         /**
          * 1. 两数之和（简单）
          * 2. 两数相加（中等）
@@ -66,15 +70,26 @@ public class MainStart {
          * 326. 3的幂（简单）
          * 342. 4的幂（简单）
          * 344. 反转字符串（简单）
+         * 367. 有效的完全平方数（简单）
+         * 368. 最大整除子集（中等）
          * 500. 键盘行（简单）
          */
 //        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
-        registNames.add("solutionV0135");
-        registNames.add("solutionV0201");
+//        registNames.add("solutionV0135");
+//        registNames.add("solutionV0201");
+//        registNames.add("solutionV0202");
+//        registNames.add("solutionV0344");
 
+        registNames.add("solutionV0231");
+        registNames.add("solutionV0322"); // com.leetcode.model.ListNode
+        registNames.add("solutionV0326");
+        registNames.add("solutionV0342");
         registNames.add("solutionV0500");
 
+        registNames.add("solutionV0367");
+        registNames.add("solutionV0368");
 
+        /********************************* LocalRegister *********************************/
         LocalRegister.regist("solutionV0001", SolutionV0001.class);
         LocalRegister.regist("solutionV0002", SolutionV0002.class);
         LocalRegister.regist("solutionV0003", SolutionV0003.class);
@@ -96,6 +111,8 @@ public class MainStart {
         LocalRegister.regist("solutionV0326", SolutionV0326.class);
         LocalRegister.regist("solutionV0342", SolutionV0342.class);
         LocalRegister.regist("solutionV0344", SolutionV0344.class);
+        LocalRegister.regist("solutionV0367", SolutionV0367.class);
+        LocalRegister.regist("solutionV0368", SolutionV0368.class);
         LocalRegister.regist("solutionV0500", SolutionV0500.class);
     }
 
@@ -106,6 +123,9 @@ public class MainStart {
                 Class clazz = LocalRegister.get(registNames.get(i));
                 Constructor constructor = clazz.getDeclaredConstructor(int.class);
                 constructor.newInstance(max);
+                if (registNames.get(i).equals(solution)) {
+                    return;
+                }
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

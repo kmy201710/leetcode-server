@@ -10,6 +10,7 @@ public class ListNode {
     public int val;
     public String name;
     public ListNode next;
+    public ListNode last;
 
     public static ListNode instance = null;
 
@@ -34,9 +35,8 @@ public class ListNode {
         if (val == -1) {
             return null;
         }
+        instance = this;
         List<Integer> list = new ArrayList();
-        list.add(val);
-        instance = next;
         while (instance != null) {
             list.add(instance.val);
             instance = instance.next;
@@ -60,6 +60,7 @@ public class ListNode {
         if (val == -1) {
             return new ListNode(x);
         }
+        last = new ListNode(x);
         return helper(this, x);
     }
 
@@ -69,6 +70,16 @@ public class ListNode {
         }
         node.next = helper(node.next, obj);
         return node;
+    }
+
+    public boolean contains(int x) {
+        if (val == -1) {
+            return false;
+        }
+        if (val == x) {
+            return true;
+        }
+        return next == null ? false : next.contains(x);
     }
 
     public static ListNode get(int... nums) {

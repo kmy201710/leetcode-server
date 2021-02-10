@@ -22,7 +22,7 @@ public class SolutionV0326 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int num = RandomUtils.randomCommon(Integer.MAX_VALUE, n);
+        int num = RandomUtils.randomCommon(max, n);
         logger.info("num = " + num);
 
         boolean result = isPowerOfThree(num);

@@ -27,7 +27,7 @@ public class SolutionV0004 {
         int n = MockUtils.get(max);
         // 获取随机数
         int[] nums1 = RandomUtils.randomCommon2(n);
-        int[] nums2 = RandomUtils.randomCommon2(nums1[0]);
+        int[] nums2 = RandomUtils.randomCommon2(n);
         logger.info("nums1 = " + Arrays.toString(nums1));
         logger.info("nums2 = " + Arrays.toString(nums2));
 
