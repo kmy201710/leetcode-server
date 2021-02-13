@@ -11,18 +11,17 @@ import java.util.List;
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
- * @Description 1. 两数之和
- * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
+ * @Description -Xss2m -Dmock=5
  * <p>
  * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/two-sum
+ * 链接：https://leetcode-cn.com/problemset/all/
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class MainStart {
     public static int max = 100;
 
-    //    public static String solution = "solutionLCP01";
-    public static String solution = "solutionV0322";
+    // public static String solution = "solutionLCP01";
+    public static String solution = "solutionV0048";
 
     public static List<String> registNames = new ArrayList<String>();
 
@@ -47,6 +46,9 @@ public class MainStart {
          * 13. 罗马数字转整数（简单）
          * 14. 最长公共前缀（简单）
          * 15. 三数之和（中等）
+         * 18. 四数之和（中等）
+         * 48. 旋转图像（中等）
+         * 58. 最后一个单词的长度（简单）
          * 75. 颜色分类（中等）
          */
 //        registNames.add("solutionV0001");
@@ -71,7 +73,6 @@ public class MainStart {
          * 342. 4的幂（简单）
          * 344. 反转字符串（简单）
          * 367. 有效的完全平方数（简单）
-         * 368. 最大整除子集（中等）
          * 500. 键盘行（简单）
          */
 //        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
@@ -84,10 +85,11 @@ public class MainStart {
         registNames.add("solutionV0322"); // com.leetcode.model.ListNode
         registNames.add("solutionV0326");
         registNames.add("solutionV0342");
+        registNames.add("solutionV0367");
         registNames.add("solutionV0500");
 
-        registNames.add("solutionV0367");
-        registNames.add("solutionV0368");
+        registNames.add("solutionV0048");
+        registNames.add("solutionV0058");
 
         /********************************* LocalRegister *********************************/
         LocalRegister.regist("solutionV0001", SolutionV0001.class);
@@ -100,6 +102,8 @@ public class MainStart {
         LocalRegister.regist("solutionV0014", SolutionV0014.class);
         LocalRegister.regist("solutionV0015", SolutionV0015.class);
         LocalRegister.regist("solutionV0018", SolutionV0018.class);
+        LocalRegister.regist("solutionV0048", SolutionV0048.class);
+        LocalRegister.regist("solutionV0058", SolutionV0058.class);
         LocalRegister.regist("solutionV0075", SolutionV0075.class);
 
         LocalRegister.regist("solutionV0101", SolutionV0101.class);
@@ -112,7 +116,6 @@ public class MainStart {
         LocalRegister.regist("solutionV0342", SolutionV0342.class);
         LocalRegister.regist("solutionV0344", SolutionV0344.class);
         LocalRegister.regist("solutionV0367", SolutionV0367.class);
-        LocalRegister.regist("solutionV0368", SolutionV0368.class);
         LocalRegister.regist("solutionV0500", SolutionV0500.class);
     }
 
