@@ -59,22 +59,24 @@ public class SolutionV0500 {
             return res;
         }
         char c = word.charAt(index);
-        if (index == 0 || res == 0) {
-            if(check(Keyboard.set1, c)) {
-                res = 1;
-            } else if(check(Keyboard.set2, c)) {
-                res = 2;
-            } else if(check(Keyboard.set3, c)) {
-                res = 3;
-            } else {
-                return res;
+        if (c != ' ') {
+            if (index == 0 || res == 0) {
+                if(check(Keyboard.set1, c)) {
+                    res = 1;
+                } else if(check(Keyboard.set2, c)) {
+                    res = 2;
+                } else if(check(Keyboard.set3, c)) {
+                    res = 3;
+                } else {
+                    return res;
+                }
+            } else if (res == 1 && !check(Keyboard.set1, c)) {
+                return 0;
+            } else if (res == 2 && !check(Keyboard.set2, c)) {
+                return 0;
+            } else if (res == 3 && !check(Keyboard.set3, c)) {
+                return 0;
             }
-        } else if (res == 1 && !check(Keyboard.set1, c)) {
-            return 0;
-        } else if (res == 2 && !check(Keyboard.set2, c)) {
-            return 0;
-        } else if (res == 3 && !check(Keyboard.set3, c)) {
-            return 0;
         }
         index++;
         return helper(word, index, res);

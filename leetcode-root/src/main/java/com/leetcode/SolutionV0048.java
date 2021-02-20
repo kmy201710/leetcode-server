@@ -1,7 +1,10 @@
 package com.leetcode;
 
 import com.leetcode.utils.MockUtils;
+import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
+
+import java.util.Arrays;
 
 /**
  * @Author hhe
@@ -20,13 +23,38 @@ public class SolutionV0048 {
     public SolutionV0048(int max) {
         // 模拟输入
         int n = MockUtils.get(max);
-        // 获取随机数
+        int[][] matrix = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            // 获取随机数
+            int[] nums = RandomUtils.randomCommon2(n);
+            logger.info("nums = " + Arrays.toString(nums));
+            matrix[i] = nums;
+        }
 
+        rotate(matrix, n);
         logger.info("rotate = ");
+        for (int i = 0; i < n; i++) {
+            logger.info(Arrays.toString(matrix[i]));
+        }
         logger.info("=====end=====");
     }
 
-    public void rotate(int[][] matrix) {
-
+    public void rotate(int[][] matrix, int n) { // public void rotate(int[][] matrix) {
+        // 水平翻转
+        for (int i = 0; i < n / 2; i++) {
+            for (int j = 0; j < n; ++j) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[n - i - 1][j];
+                matrix[n - i - 1][j] = temp;
+            }
+        }
+        // 主对角线翻转
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
     }
 }

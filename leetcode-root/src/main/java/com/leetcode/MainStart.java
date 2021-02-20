@@ -20,10 +20,9 @@ import java.util.List;
 public class MainStart {
     public static int max = 100;
 
-    // public static String solution = "solutionLCP01";
-    public static String solution = "solutionV0048";
+    public static String solution = "solutionV0101";
 
-    public static List<String> registNames = new ArrayList<String>();
+    public static List<String> registNames = new ArrayList<>();
 
     static {
         registNames.add("spiDemo");
@@ -60,6 +59,8 @@ public class MainStart {
 //        registNames.add("solutionV0014");
 //        registNames.add("solutionV0015");
 //        registNames.add("solutionV0018");
+//        registNames.add("solutionV0048");
+//        registNames.add("solutionV0058");
 //        registNames.add("solutionV0075");
 
         /**
@@ -75,21 +76,18 @@ public class MainStart {
          * 367. 有效的完全平方数（简单）
          * 500. 键盘行（简单）
          */
-//        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
+        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
 //        registNames.add("solutionV0135");
 //        registNames.add("solutionV0201");
 //        registNames.add("solutionV0202");
+//        registNames.add("solutionV0231");
 //        registNames.add("solutionV0344");
 
-        registNames.add("solutionV0231");
         registNames.add("solutionV0322"); // com.leetcode.model.ListNode
         registNames.add("solutionV0326");
         registNames.add("solutionV0342");
         registNames.add("solutionV0367");
         registNames.add("solutionV0500");
-
-        registNames.add("solutionV0048");
-        registNames.add("solutionV0058");
 
         /********************************* LocalRegister *********************************/
         LocalRegister.regist("solutionV0001", SolutionV0001.class);
@@ -123,12 +121,12 @@ public class MainStart {
         try {
             for (int i = 0; i < registNames.size(); i++) {
                 System.out.println("i = " + i);
-                Class clazz = LocalRegister.get(registNames.get(i));
-                Constructor constructor = clazz.getDeclaredConstructor(int.class);
-                constructor.newInstance(max);
                 if (registNames.get(i).equals(solution)) {
                     return;
                 }
+                Class clazz = LocalRegister.get(registNames.get(i));
+                Constructor constructor = clazz.getDeclaredConstructor(int.class);
+                constructor.newInstance(max);
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

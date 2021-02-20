@@ -72,21 +72,16 @@ public class RandomUtils {
             result += String.valueOf(c[nums[i]]);
         }
         result = SplitUtils.splitNotNumber(result);
-        return result.length() < 3 ? randomCommon(str, n) : result;
+        result = SplitUtils.splitNotBlank(result);
+        return result.length() < 3 ? randomCommon(str, n) + " " + result : result;
     }
 
     public static int[] randomCommon2(int n) {
-        int[] nums = helper(n);
-        Arrays.sort(nums);
-        return nums;
-    }
-
-    public static int[] helper(int n) {
-        int[] nums = randomCommon(0, 100, n % 100); // randomCommon(0, 100, n);
+        int[] nums = randomCommon(0, 20, n % 10); // randomCommon(0, 20, n);
         if (nums[0] < 5) {
-            nums = helper(n);
-            return nums;
+            return randomCommon2(n);
         }
+        Arrays.sort(nums);
         return nums;
     }
 }

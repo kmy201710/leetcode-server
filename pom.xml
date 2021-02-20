@@ -6,6 +6,7 @@
 
     <groupId>com.leetcode</groupId>
     <artifactId>leetcode-server</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
 
 

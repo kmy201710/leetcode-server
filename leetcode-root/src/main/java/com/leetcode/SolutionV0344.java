@@ -4,9 +4,6 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
@@ -22,29 +19,33 @@ import java.util.List;
 public class SolutionV0344 {
     private static Logger logger = Logger.getLogger(SolutionV0344.class);
 
-    private static List<Character> list = new ArrayList<>();
-
     public SolutionV0344(int max) {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
         String s = RandomUtils.randomCommon(MockUtils.str, n);
-        logger.info("s = " + s);
+        logger.info("s = |" + s + "|");
 
-        reverseString(s);
-        logger.info("reverseString = " + list.toString());
+        char[] result = reverseString(s.toCharArray());
+        logger.info("reverseString = " + String.valueOf(result));
         logger.info("=====end=====");
     }
 
-    public void reverseString(String s) { // public void reverseString(char[] s) {
-        helper(s.toCharArray(), 0);
+    public char[] reverseString(char[] c) { // public void reverseString(char[] s) {
+        return helper(c, 0);
     }
 
-    private void helper(char[] c, int index) {
-        if (c.length == index) {
-            return;
+    private char[] helper(char[] c, int index) {
+        if (index >= c.length / 2) {
+            return c;
         }
-        helper(c, index + 1);
-        list.add(c[index]);
+        swap(c, index);
+        return helper(c, index + 1);
+    }
+
+    private void swap(char[] c, int index) {
+        char tmp = c[index];
+        c[index] = c[c.length - index - 1];
+        c[c.length - index - 1] = tmp;
     }
 }

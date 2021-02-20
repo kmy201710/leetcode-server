@@ -25,7 +25,7 @@ public class SolutionV0003 {
         int n = MockUtils.get(max);
         // 获取随机数
         String s = RandomUtils.randomCommon(MockUtils.str, n);
-        logger.info("s = " + s);
+        logger.info("s = |" + s + "|");
 
         int result = lengthOfLongestSubstring(s);
         logger.info("lengthOfLongestSubstring = " + result);
@@ -39,8 +39,11 @@ public class SolutionV0003 {
     private int helper(char[] c, int index, int length) {
         Map<Character, Integer> map = new HashMap<>();
         for (int i = index; i < c.length; i++) {
+            if (c[i] == ' ') {
+                continue;
+            }
             if (map.containsKey(c[i])) {
-                return helper(c, i, Math.max(i - index, length));
+                return helper(c, index + 1, Math.max(i - index, length));
             }
             map.put(c[i], i);
         }

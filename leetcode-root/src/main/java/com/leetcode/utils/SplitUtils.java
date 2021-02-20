@@ -42,4 +42,11 @@ public class SplitUtils {
         }
         return "";
     }
+
+    public static String splitNotBlank(String content) {
+        if (content.length() > 1 && content.charAt(0) == ' ') {
+            return content.trim();
+        }
+        return content;
+    }
 }

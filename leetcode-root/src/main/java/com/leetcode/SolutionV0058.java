@@ -1,6 +1,7 @@
 package com.leetcode;
 
 import com.leetcode.utils.MockUtils;
+import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -21,12 +22,21 @@ public class SolutionV0058 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
+        String s = RandomUtils.randomCommon(MockUtils.str, n);
+        logger.info("s = |" + s + "|");
 
-        logger.info("lengthOfLastWord = ");
+        int result = lengthOfLastWord(s);
+        logger.info("lengthOfLastWord = " + result);
         logger.info("=====end=====");
     }
 
     public int lengthOfLastWord(String s) {
-        return 0;
+        int length = s.length() - 1;
+        int end = length;
+        while (end >= 0 && s.charAt(end) == ' ') end--;
+        if (end == 0) return 0;
+        int start = end;
+        while (start >= 0 && s.charAt(start) != ' ') start--;
+        return end - start;
     }
 }

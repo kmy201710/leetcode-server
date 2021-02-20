@@ -39,7 +39,7 @@ public class SolutionV0004 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         ListNode l1 = ListNode.get(nums1), l2 = ListNode.get(nums2);
         List<Integer> list = new ArrayList<>();
-        helper(l1, l2, list);
+        list = helper(l1, l2, list);
 
         int count = list.size();
         if (count % 2 == 0) {
@@ -49,9 +49,9 @@ public class SolutionV0004 {
         }
     }
 
-    private void helper(ListNode l1, ListNode l2, List<Integer> list) {
+    private List<Integer> helper(ListNode l1, ListNode l2, List<Integer> list) {
         if (l1 == null && l2 == null) {
-            return;
+            return list;
         }
         int n1 = l1 != null ? l1.val : 0;
         int n2 = l2 != null ? l2.val : 0;
@@ -69,6 +69,6 @@ public class SolutionV0004 {
             list.add(n2);
             l2 = l2.next != null ? l2.next : null;
         }
-        helper(l1, l2, list);
+        return helper(l1, l2, list);
     }
 }

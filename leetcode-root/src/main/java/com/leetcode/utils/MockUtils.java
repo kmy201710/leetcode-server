@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @Description
  */
 public class MockUtils {
-    public static String str = "t23451!t@axq2ffddcaddcad'";
+    public static String str = "t  1  23451the#ffddcadcad";
 
     /**
      * 模拟输入
@@ -25,5 +25,4 @@ public class MockUtils {
         }
         return num < 3 ? 3 : num % max;
     }
-
 }
