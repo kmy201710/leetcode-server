@@ -30,9 +30,9 @@ public class MainStart {
 
         registNames.add("solutionV0016");
         registNames.add("solutionV0022");
-        registNames.add("solutionV0221");
         registNames.add("solutionV0322"); // com.leetcode.model.ListNode
 
+        registNames.add("solutionV0221");
         registNames.add("solutionV0367");
         registNames.add("solutionV0500");
         registNames.add("solutionV0697");
