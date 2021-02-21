@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @Author hhe
- * @Date 2021/2/3 17:35
+ * @Date 2021/2/21 10:24
  * @Description 500. 键盘行（简单）
  * 给你一个字符串数组 words ，只返回可以使用在 美式键盘 同一行的字母打印出来的单词。键盘如下图所示。
  * 美式键盘 中：
@@ -40,7 +40,7 @@ public class SolutionV0500 {
         logger.info("words = " + Arrays.toString(words));
 
         findWords(words);
-        logger.info("findWords = " + StringUtils.join(list, " "));
+        logger.info("findWords = " + StringUtils.join(list, ","));
         logger.info("=====end=====");
     }
 
