@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * @Author hhe
  * @Date 2021/2/3 17:35
- * @Description -Xss2m -Dmock=5
+ * @Description -Xmx512m -Xms512m -Xmn200m -Xss2g -Dmock=5
+ * -Xmx3550m -Xms3550m -Xmn2g -Xss128k
  * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problemset/all/
@@ -32,18 +33,19 @@ public class MainStart {
         registNames.add("solutionV0022");
         registNames.add("solutionV0322"); // com.leetcode.model.ListNode
 
+        registNames.add("solutionLCP02");
         registNames.add("solutionV0221");
         registNames.add("solutionV0367");
         registNames.add("solutionV0500");
         registNames.add("solutionV0697");
 
+        /********************************* registNames *********************************/
         /**
          * LCP 01. 猜数字（简单）
+         * LCP 02. 分式化简（简单）
          */
-//        registNames.add("solutionLCP01");
-//        LocalRegister.regist("solutionLCP01", SolutionLCP01.class);
+        registNames.add("solutionLCP01");
 
-        /********************************* registNames *********************************/
         /**
          * 1. 两数之和（简单）
          * 2. 两数相加（中等）
@@ -89,16 +91,19 @@ public class MainStart {
          * 500. 键盘行（简单）
          * 697. 数组的度（简单）
          */
-//        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
-//        registNames.add("solutionV0135");
-//        registNames.add("solutionV0201");
-//        registNames.add("solutionV0202");
-//        registNames.add("solutionV0231");
-//        registNames.add("solutionV0326");
-//        registNames.add("solutionV0342");
-//        registNames.add("solutionV0344");
+        registNames.add("solutionV0101"); // com.leetcode.model.TreeNode
+        registNames.add("solutionV0135");
+        registNames.add("solutionV0201");
+        registNames.add("solutionV0202");
+        registNames.add("solutionV0231");
+        registNames.add("solutionV0326");
+        registNames.add("solutionV0342");
+        registNames.add("solutionV0344");
 
         /********************************* LocalRegister *********************************/
+        LocalRegister.regist("solutionLCP01", SolutionLCP01.class);
+        LocalRegister.regist("solutionLCP02", SolutionLCP02.class);
+
         LocalRegister.regist("solutionV0001", SolutionV0001.class);
         LocalRegister.regist("solutionV0002", SolutionV0002.class);
         LocalRegister.regist("solutionV0003", SolutionV0003.class);
