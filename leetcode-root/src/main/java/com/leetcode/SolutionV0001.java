@@ -48,6 +48,7 @@ public class SolutionV0001 {
     public void twoSum(int[] nums, int target) { // public int[] twoSum(int[] nums, int target) {
         Arrays.sort(nums);
         logger.info("nums = " + Arrays.toString(nums));
+        logger.info("target = " + target);
         if (nums.length < 2 || nums[0] + nums[1] > target) {
             return;
         }

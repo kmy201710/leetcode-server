@@ -4,6 +4,8 @@ import com.leetcode.utils.MockUtils;
 import com.leetcode.utils.RandomUtils;
 import org.apache.log4j.Logger;
 
+import java.util.Arrays;
+
 /**
  * @Author hhe
  * @Date 2021/2/21 10:24
@@ -21,9 +23,48 @@ public class SolutionV0016 {
         // 模拟输入
         int n = MockUtils.get(max);
         // 获取随机数
-        int num = RandomUtils.randomCommon(max, n);
-        logger.info("num = " + num);
+        int[] nums = RandomUtils.randomCommon(-5, 10, n);
+        logger.info("nums = " + Arrays.toString(nums));
 
+        int result = threeSumClosest(nums, 5);
+        logger.info("longestCommonPrefix = " + result);
         logger.info("=====end=====");
+    }
+
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        logger.info("nums = " + Arrays.toString(nums));
+        logger.info("target = " + target);
+        if (nums.length < 3 || nums[0] + nums[1] + nums[2] > target) {
+            return 0;
+        }
+        return helper(nums, target, 0, 1, nums.length - 1, Integer.MAX_VALUE);
+    }
+
+    private int helper(int[] nums, int target, int i, int left, int right, int res) {
+        if (left == right) {
+            i++;
+            if (i == nums.length - 2) {
+                return res;
+            }
+            left = i + 1;
+            right = nums.length - 1;
+        }
+        int sum = nums[i] + nums[left] + nums[right];
+        if (sum == target) {
+            return target;
+        } else if (sum < target) {
+            while (left < right && nums[left] == nums[left + 1]) {
+                left++;
+            }
+            left++;
+        } else {
+            while (left < right && nums[right] == nums[right - 1]) {
+                right--;
+            }
+            right--;
+        }
+        res = Math.abs(target - res) < Math.abs(target - sum) ? res : sum;
+        return helper(nums, target, i, left, right, res);
     }
 }

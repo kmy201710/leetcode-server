@@ -41,7 +41,7 @@ public class SolutionV0018 {
     public void fourSum(int[] nums, int target) { // public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
         logger.info("nums = " + Arrays.toString(nums));
-        if (nums.length < 4 || nums[0] + nums[1] + nums[2] + nums[3] > 0) {
+        if (nums.length < 4 || nums[0] + nums[1] + nums[2] + nums[3] > target) {
             return;
         }
         helper(nums, target, 0, 1, 2, nums.length - 1);
